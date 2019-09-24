@@ -76,10 +76,9 @@ let group = DispatchGroup()
 results.forEach { itemToDelete in
   group.enter()
   let delete = """
-  curl --insecure --request DELETE \
+  curl --insecure --verbose --request DELETE \
   --url \(URL)/\(repo)/\(repoPath)/\(marketingVersion)/\(itemToDelete) \
   --header 'authorization: Basic \(artifactoryToken)'
-  --verbose
   """
   DispatchQueue.global().async {
     print(delete)
